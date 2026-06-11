@@ -48,10 +48,24 @@ Route::middleware('guest')->group(function () {
 
     Route::get('/recuperar-contrasena', fn() => view('auth.forgot-password'))->name('password.request');
     Route::post('/recuperar-contrasena', function (\Illuminate\Http\Request $req) {
-        $status = \Illuminate\Support\Facades\Password::sendResetLink($req->only('email'));
-        return $status === \Illuminate\Support\Facades\Password::RESET_LINK_SENT
-            ? back()->with('status', __($status))
-            : back()->withErrors(['email' => __($status)]);
+
+        $req->validate([
+            'email' => 'required|email'
+        ]);
+
+        if (!$req->boolean('captcha')) {
+            return back()
+                ->withInput()
+                ->withErrors([
+                    'captcha' => 'Por favor confirma que no eres un robot.'
+                ]);
+        }
+
+        return back()->with(
+            'status',
+            'Se ha enviado un enlace de recuperación a tu correo electrónico.'
+        );
+
     })->name('password.email');
 });
 
