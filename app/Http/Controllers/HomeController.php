@@ -25,7 +25,6 @@ class HomeController extends Controller
 
     public function buzon()
     {
-        $this->middleware('auth');
         return view('pages.buzon');
     }
 }
