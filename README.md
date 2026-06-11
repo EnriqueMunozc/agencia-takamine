@@ -1,58 +1,434 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Agencia Takamine - Proyecto Laravel
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Descripción
 
-## About Laravel
+Agencia Takamine es una aplicación web desarrollada con Laravel que simula el sitio web de una agencia especializada en guitarras Takamine para el género Regional Mexicano.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+El proyecto implementa el patrón de arquitectura MVC (Modelo - Vista - Controlador), autenticación de usuarios, validaciones frontend y backend, gestión de sesiones y conexión con base de datos.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+# Tecnologías utilizadas
 
-## Learning Laravel
+## Backend
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+* PHP 8.3
+* Laravel 13
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Frontend
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+* HTML5
+* CSS3
+* JavaScript
+* Blade Templates
 
-## Agentic Development
+## Base de Datos
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+* SQLite
+
+## Control de versiones
+
+* Git
+* GitHub
+
+## Entorno de desarrollo
+
+* Laragon
+* Composer
+* Node.js (opcional para Vite)
+
+---
+
+# Requisitos del sistema
+
+Antes de ejecutar el proyecto es necesario tener instalado:
+
+## 1. Laragon
+
+Descargar e instalar Laragon:
+
+https://laragon.org
+
+Laragon proporciona:
+
+* Apache
+* PHP
+* MySQL
+* Terminal integrada
+* Gestión de proyectos locales
+
+---
+
+## 2. Composer
+
+Verificar instalación:
 
 ```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+composer --version
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+Si Composer no está instalado:
 
-## Contributing
+https://getcomposer.org
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+---
 
-## Code of Conduct
+## 3. Git
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Verificar instalación:
 
-## Security Vulnerabilities
+```bash
+git --version
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Si Git no está instalado:
 
-## License
+https://git-scm.com
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+---
+
+## 4. PHP
+
+Verificar instalación:
+
+```bash
+php -v
+```
+
+Versión utilizada durante el desarrollo:
+
+```text
+PHP 8.3
+```
+
+---
+
+# Clonación del proyecto
+
+Abrir una terminal y ejecutar:
+
+```bash
+git clone URL_DEL_REPOSITORIO
+```
+
+Entrar a la carpeta:
+
+```bash
+cd Agencia
+```
+
+---
+
+# Instalación de dependencias
+
+Instalar todas las dependencias de Laravel:
+
+```bash
+composer install
+```
+
+Este comando descargará todas las librerías necesarias definidas en:
+
+```text
+composer.json
+```
+
+---
+
+# Configuración del archivo .env
+
+Crear una copia del archivo de configuración:
+
+```bash
+cp .env.example .env
+```
+
+Si se trabaja en Windows:
+
+```bash
+copy .env.example .env
+```
+
+---
+
+# Generación de clave de aplicación
+
+Ejecutar:
+
+```bash
+php artisan key:generate
+```
+
+Laravel generará automáticamente:
+
+```env
+APP_KEY=
+```
+
+Esta clave es utilizada para:
+
+* Encriptación
+* Sesiones
+* Tokens
+* Cookies
+
+---
+
+# Configuración de la base de datos
+
+Este proyecto utiliza SQLite.
+
+Crear el archivo:
+
+```text
+database/database.sqlite
+```
+
+Puede crearse manualmente o mediante terminal.
+
+Ejemplo:
+
+```bash
+type nul > database/database.sqlite
+```
+
+Verificar que el archivo exista.
+
+---
+
+## Configurar .env
+
+Asegurarse de tener:
+
+```env
+DB_CONNECTION=sqlite
+```
+
+Las demás variables de MySQL deben permanecer comentadas.
+
+---
+
+# Ejecutar migraciones
+
+Crear las tablas necesarias:
+
+```bash
+php artisan migrate
+```
+
+Laravel generará automáticamente:
+
+* users
+* cache
+* jobs
+* password_reset_tokens
+* sessions
+
+---
+
+# Verificar migraciones
+
+Ejecutar:
+
+```bash
+php artisan migrate:status
+```
+
+Todas las migraciones deben aparecer como:
+
+```text
+Ran
+```
+
+---
+
+# Ejecutar el proyecto
+
+Iniciar el servidor local:
+
+```bash
+php artisan serve
+```
+
+Laravel mostrará algo similar a:
+
+```text
+INFO Server running on:
+
+http://127.0.0.1:8000
+```
+
+Abrir esa dirección en el navegador.
+
+---
+
+# Funcionalidades implementadas
+
+## Navegación
+
+* Inicio
+* Catálogo
+* Regional Mexicano
+* Nosotros
+* Blog
+* Contacto
+* Ayuda
+* Mapa del sitio
+
+---
+
+## Catálogo
+
+* Guitarras de 12 cuerdas
+* Guitarras de 6 cuerdas
+* Accesorios
+
+---
+
+## Regional Mexicano
+
+* Norteño
+* Banda
+* Ranchero
+
+---
+
+## Sistema de autenticación
+
+* Registro de usuarios
+* Inicio de sesión
+* Cierre de sesión
+* Protección de rutas mediante middleware
+* Gestión de sesiones
+
+---
+
+## Validaciones Frontend
+
+Se implementaron validaciones mediante HTML5:
+
+* required
+* email
+* password confirmation
+* minlength
+
+---
+
+## Validaciones Backend
+
+Implementadas mediante:
+
+* UserValidator
+* Request Validation
+* Middleware de autenticación
+
+Validaciones realizadas:
+
+* Correo único
+* Contraseña segura
+* Coincidencia de contraseñas
+* Prevención de scripts maliciosos
+* Longitud mínima de campos
+
+---
+
+## Validación de usuarios humanos
+
+El sistema implementa validación tipo CAPTCHA mediante checkbox:
+
+```text
+No soy un robot
+```
+
+---
+
+## Base de Datos
+
+La información de los usuarios registrados se almacena en SQLite.
+
+Tabla principal:
+
+```text
+users
+```
+
+---
+
+## Búsqueda
+
+Se implementó un buscador integrado en la barra de navegación.
+
+---
+
+## Chat
+
+Se implementó un widget de chat integrado en la interfaz principal.
+
+---
+
+## Páginas de error personalizadas
+
+Se desarrollaron páginas de error para:
+
+### Error 404
+
+Página no encontrada.
+
+### Error 500
+
+Error interno del servidor.
+
+Ubicación:
+
+```text
+resources/views/errors
+```
+
+---
+
+# Arquitectura MVC
+
+## Controladores
+
+Ubicación:
+
+```text
+app/Http/Controllers
+```
+
+Controladores implementados:
+
+* HomeController
+* AuthController
+* ContactController
+* SearchController
+
+---
+
+## Vistas
+
+Ubicación:
+
+```text
+resources/views
+```
+
+Se utilizaron plantillas Blade para la construcción de la interfaz.
+
+---
+
+## Rutas
+
+Ubicación:
+
+```text
+routes/web.php
+```
+
+Todas las rutas del sistema se encuentran definidas en este archivo.
+
+---
+
+# Autor
+
+Proyecto desarrollado como práctica académica utilizando Laravel 13 y el patrón MVC.
